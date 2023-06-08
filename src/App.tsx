@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import { privateRoutes, publicRoutes } from "./units/routes";
+import { Loader } from "./components/loader/Loader";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
-export default App;
+  if (isLogin) {
+    return (
+      <RouterProvider
+        key={1}
+        router={privateRoutes}
+        fallbackElement={<Loader />}
+      />
+    );
+  } 
+    return (
+      <RouterProvider
+        key={2}
+        router={publicRoutes}
+        fallbackElement={<Loader />}
+      />
+    );
+  };
+
+export default App
