@@ -1,4 +1,4 @@
-import { PublicNavbar } from "../navbar/PublicNavbar"
+import { Navbar } from "../navbar/Navbar"
 
 type Props = {children: React.ReactNode}
 
@@ -6,7 +6,7 @@ export const PublicLayout = ({children}:Props) => {
   return (
     <div>
       <header>
-        <PublicNavbar/>
+        <Navbar/>
       </header>
       <body>
         {children}

@@ -1,11 +1,11 @@
-import { PrivateNavbar } from "../navbar/PrivateNavbar"
+import { Navbar } from "../navbar/Navbar"
 type Props = {children: React.ReactNode}
 
 export const PrivateLayout = ({children}:Props) => {
   return (
     <div>
       <header>
-      <PrivateNavbar/>
+      <Navbar/>
       </header>
       <body>
       {children}

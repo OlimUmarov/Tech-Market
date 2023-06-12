@@ -1,7 +1,7 @@
 
 type Props = {}
 
-const BottomHeader = (props: Props) => {
+export const BottomHeader = (props: Props) => {
   return (
     <div>BottomHeader</div>
   )
