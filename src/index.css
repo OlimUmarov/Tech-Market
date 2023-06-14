@@ -4,8 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --indigo-500: #4F46E5;
+    --indigo-200: #C7D2FE;
+}
+
 html{
-    max-width: 1240px;
     margin: 0 auto;
+    padding: 0;
+    font-size: 14px;
     box-sizing: border-box;
+    background-color: #FFFFFF;
     font-family: "Poppins", sans-serif;}

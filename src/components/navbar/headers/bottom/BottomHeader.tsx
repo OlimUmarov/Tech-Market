@@ -3,6 +3,6 @@ type Props = {}
 
 export const BottomHeader = (props: Props) => {
   return (
-    <div>BottomHeader</div>
+    <div className="container">BottomHeader</div>
   )
 }

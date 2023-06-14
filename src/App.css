@@ -1,7 +1,31 @@
+@media (max-width: 500px) {
+    .search {
+      max-width: 100%; /* Responsive behavior for smaller screen sizes */
+    }
+    .searchinput{
+        max-width: 100%;
+    }
+  }
+
 .flex-center{
     @apply flex justify-center items-center
 }
 
 .flex-col-center{
     @apply flex flex-col justify-center items-center
+}
+.transitions{
+    @apply transition-all duration-300 ease-in-out
+}
+.searchContainer{
+    max-width: 700px;
+}
+.searchinput{
+    max-width: 600px;
+}
+
+.container{
+    max-width: 1245px;
+    margin: 0 auto;
+    padding: 0 45px;
 }

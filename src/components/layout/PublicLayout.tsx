@@ -4,11 +4,11 @@ type Props = {children: React.ReactNode}
 
 export const PublicLayout = ({children}:Props) => {
   return (
-    <div>
+    <div >
       <header>
         <Navbar/>
       </header>
-      <body>
+      <body className="container">
         {children}
       </body>
     </div>

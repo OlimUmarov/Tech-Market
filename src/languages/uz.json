@@ -1,7 +1,11 @@
 {
-    "header.catalog": "Katalog",
-    "header.search": "Mahsulotlar va toifalarni qidiring",
-    "header.login": "Kirish",
-    "header.favourites": "Saralangan",
-    "header.cart": "Savat"
-  }
+  "header.top-title": "Buyurtmangizni 1 kunda bepul yetkazib beramiz!",
+  "header.top-questions": "Savol-javoblar",
+  "header.top-myOrders": "Buyurtmalarim",
+  "header.top-places": "Topshirish punktlari",
+  "header.middle-catalog": "Katalog",
+  "header.middle-search": "Mahsulotlar va toifalarni qidiring",
+  "header.middle-login": "Kirish",
+  "header.middle-favourites": "Saralangan",
+  "header.middle-cart": "Savat"
+}

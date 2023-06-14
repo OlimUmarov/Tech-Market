@@ -1,25 +1,48 @@
-import { Catalog } from "./Catalog"
-import { Search } from "./Search"
-import { Store } from "./Store"
+import { Catalog } from "./Catalog";
+import { Search } from "./Search";
+import { Store } from "./Store";
+const Logo = require('../../../../assets/images/logo.png')
 
-type Props = {}
 
-export const MiddleHeader = (props: Props) => {
+export const MiddleHeader = () => {
+
+
   return (
-    <header>
-    <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-800">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href="https://flowbite.com" className="flex items-center">
-                <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-            </a>
+    <header className="py-5 w-full">
+      <nav className="container border-gray-200 py-2.5 dark:bg-gray-800">
+        <div className="flex  justify-between items-center mx-auto">
 
-            <Catalog/>
-            <Search/>
-            <Store/>
-         
+          <section>
+            <a href="/" className="flex items-center">
+              <img
+                src={Logo}
+                alt="logo"
+                className="w-10 h-10 rounded-full"
+              />
+              <span className="self-center text-2xl font-semibold pl-2 whitespace-nowrap dark:text-white">
+                tech market
+              </span>
+            </a>
+          </section>
+
+          <section  className="flex gap-2 w-2/3">
+            <div className="max-lg:hidden">
+            <Catalog />
+            </div>
+          <div className="w-full max-lg:hidden">
+          <Search />
+          </div> 
+          </section>
+
+          <section>
+            <Store />
+          </section>
+
         </div>
-    </nav>
-</header>
-  )
-}
+        <div className="w-full mt-4 lg:hidden">
+          <Search />
+          </div> 
+      </nav>
+    </header>
+  );
+};
