@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "vite:env-compatible"
+      }
+    ],
     "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"]
-    },
     "target": "es5",
     "lib": [
       "dom",

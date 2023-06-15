@@ -7,9 +7,9 @@ export const PrivateLayout = ({children}:Props) => {
       <header>
       <Navbar/>
       </header>
-      <body className="container">
+      <div className="container">
       {children}
-      </body>
+      </div>
     </div>
   )
 }

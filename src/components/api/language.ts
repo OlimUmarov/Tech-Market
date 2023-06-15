@@ -1,4 +1,4 @@
-import { languageList } from "@/types/header"
+import { languageList } from "../../types/header"
 
 const en = require('../../assets/images/en.svg').default
 const ru = require('../../assets/images/ru.svg').default
