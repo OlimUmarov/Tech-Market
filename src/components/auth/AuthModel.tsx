@@ -5,9 +5,10 @@ import { Login } from "./Login";
 
 type Props = {
   isClicked: boolean;
+  onClick: (data:boolean)=> void;
 };
 
-export const AuthModel: React.FC<Props> = ({ isClicked }) => {
+export const AuthModel: React.FC<Props> = ({ isClicked, onClick }) => {
   const [openModal, setOpenModal] = useState<string | undefined>();
   const props = { openModal, setOpenModal };
   const [showSignUp, setShowSignUp] = useState<boolean>(true);
@@ -20,20 +21,27 @@ export const AuthModel: React.FC<Props> = ({ isClicked }) => {
     setShowSignUp(!showSignUp);
   }
 
+  function closeModel(data?: boolean) {
+    data && props.setOpenModal(undefined)
+  }
+
   return (
     <div className="bg-blue-500 ">
       <Modal
       size="md"
         show={props.openModal === "click"}
-        onClose={() => props.setOpenModal(undefined)}
+        onClose={() => {
+          props.setOpenModal(undefined)
+          onClick(false)
+        }}
       >
         <Modal.Header> Saytga kirish</Modal.Header>
         <Modal.Body>
           <div className="flex-center">
             {showSignUp ? (
-              <SignUp onClick={handleShowSignUp} />
+              <SignUp onClick={handleShowSignUp} closeModel={closeModel}/>
             ) : (
-              <Login onClick={handleShowSignUp} />
+              <Login onClick={handleShowSignUp} closeModel={closeModel}/>
             )}
           </div>
         </Modal.Body>

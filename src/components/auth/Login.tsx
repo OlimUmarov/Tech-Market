@@ -9,13 +9,15 @@ import { SubmitHandler } from "react-hook-form";
 import InputMask from "react-input-mask";
 import authorization from "api/authApi";
 import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { changeAlert, changeLoading } from "../../features/contentSlice";
+import { changeAlert, changeLoading,changeToken } from "../../features/contentSlice";
 import { setItem } from "../../lib/itemStorage";
 import { nprogress } from '@mantine/nprogress';
+import { useNavigate } from "react-router-dom";
 
-export const Login: React.FC<authType> = ({ onClick }) => {
+export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
   const dispatch = useAppDispatch();
   const {isLoading} = useAppSelector((state) => state.contentSlice)
+  const navigate = useNavigate()
 
   const {
     register,
@@ -31,11 +33,14 @@ export const Login: React.FC<authType> = ({ onClick }) => {
     await authorization
       .login(data)
       .then((res) => {
-        setItem("access_token", res.data.auth_token);
         if (res.status === 201 || res.status === 200) {
+        setItem("access_token", res.data.auth_token);
           dispatch(changeLoading(false));
           dispatch(changeAlert({ message: res.statusText, color: "green" }));
+          closeModel(true)
           nprogress.complete()
+          navigate("/")
+          dispatch(changeToken(true))
         }
       })
       .catch((err) => {

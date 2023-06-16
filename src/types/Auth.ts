@@ -1,5 +1,6 @@
 export type authType = {
-    onClick: ()=> void
+    onClick: ()=> void,
+    closeModel: (data:boolean) => void
 }
 
 export type Schema = {

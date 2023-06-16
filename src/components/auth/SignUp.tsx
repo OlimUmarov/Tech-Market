@@ -8,13 +8,16 @@ import { singUp } from "../../lib/schema";
 import InputMask from "react-input-mask";
 import authorization from "api/authApi";
 import { SubmitHandler } from "react-hook-form";
-import { useAppDispatch,useAppSelector } from "../../app/hook";
-import { changeAlert, changeLoading } from "../../features/contentSlice";
-import { nprogress } from '@mantine/nprogress';
+import { useAppDispatch, useAppSelector } from "../../app/hook";
+import { changeAlert, changeLoading, changeToken } from "../../features/contentSlice";
+import { nprogress } from "@mantine/nprogress";
+import { useNavigate } from "react-router-dom";
+import { setItem } from "../../lib/itemStorage";
 
-export const SignUp: React.FC<authType> = ({ onClick }) => {
+export const SignUp: React.FC<authType> = ({ onClick, closeModel }) => {
   const dispatch = useAppDispatch();
-  const {isLoading} = useAppSelector((state) => state.contentSlice)
+  const { isLoading } = useAppSelector((state) => state.contentSlice);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -25,21 +28,47 @@ export const SignUp: React.FC<authType> = ({ onClick }) => {
   });
 
   const onSubmit: SubmitHandler<Schema> = async (data) => {
-    dispatch(changeLoading(true))
-    nprogress.start()
+    dispatch(changeLoading(true));
+    nprogress.start();
+
     await authorization
       .register(data)
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          dispatch(changeAlert({ message: res.statusText, color: "green" }));
-          dispatch(changeLoading(false))
-          nprogress.complete()
+          authorization
+            .login(data)
+            .then((res) => {
+              setItem("access_token", res.data.auth_token);
+              if (res.status === 201 || res.status === 200) {
+                dispatch(changeLoading(false));
+                dispatch(
+                  changeAlert({ message: res.statusText, color: "green" })
+                );
+                closeModel(true);
+                nprogress.complete();
+                navigate('/');
+                dispatch(changeToken(true))
+              }
+            })
+            .catch((err) => {
+              nprogress.complete();
+              dispatch(changeLoading(false));
+              dispatch(
+                changeAlert({
+                  message: err.response.data.non_field_errors,
+                  color: "red",
+                })
+              );
+            })
+            .finally(() => {
+              nprogress.complete();
+            });
         }
       })
       .catch((err) => {
         if (err.response.data.phone_number) {
-          nprogress.complete()
-          dispatch(changeLoading(false))
+          nprogress.complete();
+          dispatch(changeLoading(false));
           dispatch(
             changeAlert({
               message: err.response.data.phone_number,
@@ -47,18 +76,25 @@ export const SignUp: React.FC<authType> = ({ onClick }) => {
             })
           );
         } else {
-          dispatch(changeLoading(false))
+          dispatch(changeLoading(false));
           dispatch(
             changeAlert({
               message: err.response.data.password,
               color: "red",
             })
           );
-          nprogress.complete()
+          nprogress.complete();
         }
-      }).finally(()=> {
-        nprogress.complete()
-      })
+      });
+
+    // if (res.status === 201 || res.status === 200) {
+    //   const loginResponse = await authorization.login(data).then((res) => {
+    //     if (res.status === 200) {
+    //       dispatch(changeAlert({ message: res.statusText, color: "green" }));
+    //       dispatch(changeLoading(false))
+    //       nprogress.complete()
+    //     }
+    //   });
   };
 
   return (
@@ -140,7 +176,11 @@ export const SignUp: React.FC<authType> = ({ onClick }) => {
       {/* Already has Accoount */}
       <div className="font-medium text-md mt-6 w-full flex-center gap-1">
         Akkauntingiz bormi?
-        <button disabled={isLoading} className="text-blue-600 cursor-pointer" onClick={onClick}>
+        <button
+          disabled={isLoading}
+          className="text-blue-600 cursor-pointer"
+          onClick={onClick}
+        >
           Kirish
         </button>
       </div>

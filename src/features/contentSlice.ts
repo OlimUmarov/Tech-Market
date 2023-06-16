@@ -6,6 +6,7 @@ type InititialProps = {
     color: "red" | "green";
   };
   isLoading: boolean;
+  isToken: boolean
 };
 
 const initialState: InititialProps = {
@@ -14,6 +15,7 @@ const initialState: InititialProps = {
     color: "red",
   },
   isLoading: false,
+  isToken: false,
 };
 
 const contentSlice = createSlice({
@@ -29,8 +31,11 @@ const contentSlice = createSlice({
     changeLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
+    changeToken: (state, action: PayloadAction<boolean>) => {
+      state.isToken = action.payload;
+    },
   },
 });
 
 export default contentSlice.reducer;
-export const { changeAlert, changeLoading } = contentSlice.actions;
+export const { changeAlert, changeLoading, changeToken } = contentSlice.actions;
