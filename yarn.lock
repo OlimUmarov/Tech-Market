@@ -1783,6 +1783,13 @@
     react-remove-scroll "^2.5.5"
     react-textarea-autosize "8.3.4"
 
+"@mantine/dates@^6.0.13":
+  version "6.0.13"
+  resolved "https://registry.npmjs.org/@mantine/dates/-/dates-6.0.13.tgz"
+  integrity sha512-sWStU+sgblTZAfuuFlwG3w3WCFYHVf1L+sG2WdlXOljd9WpQVem214HTh6staJ894+vIQESIvseWvq6FDyQAaQ==
+  dependencies:
+    "@mantine/utils" "6.0.13"
+
 "@mantine/hooks@^6.0.13", "@mantine/hooks@6.0.13":
   version "6.0.13"
   resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-6.0.13.tgz"
@@ -3979,6 +3986,11 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
+
+dayjs@>=1.0.0:
+  version "1.11.8"
+  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.8.tgz"
+  integrity sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==
 
 debounce@^1.2.0:
   version "1.2.1"
@@ -8053,6 +8065,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-date-object@^2.1.5:
+  version "2.1.7"
+  resolved "https://registry.npmjs.org/react-date-object/-/react-date-object-2.1.7.tgz"
+  integrity sha512-810eaGk/xvQBJNncPvhwXaKcSwPRKX48jtY/5U5T1bSUnGFqmBdMvl4EVl76cyzQ8U3KX6hpF6xZ1c0eY9vvJA==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
@@ -8090,6 +8107,11 @@ react-dev-utils@^12.0.1:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-element-popper@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.npmjs.org/react-element-popper/-/react-element-popper-2.1.6.tgz"
+  integrity sha512-8va7mUmrKIkUnaM2t5Dyctd8cjgVgVcrv5vVD0FRay0sN6EPBCKa0bDi1/KmVDAjfgSIn7zQnjtc4VojcGrkgQ==
 
 react-error-overlay@^6.0.11:
   version "6.0.11"
@@ -8150,6 +8172,14 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-multi-date-picker@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/react-multi-date-picker/-/react-multi-date-picker-4.1.2.tgz"
+  integrity sha512-slpfl4uzXs9mA31WvJQGqbOVbFVUR+dogSya2SEjC2AVvIKPMHf3fAaEmF6OKpgd7NDldlSpfVG7Ubhju/wB8w==
+  dependencies:
+    react-date-object "^2.1.5"
+    react-element-popper "^2.1.6"
 
 "react-redux@^7.2.1 || ^8.0.2", react-redux@^8.0.7:
   version "8.0.7"

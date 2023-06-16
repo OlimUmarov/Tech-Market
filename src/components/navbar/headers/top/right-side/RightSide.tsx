@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { languages } from "../../../api/language";
-import { languageList } from "../../../../types/header";
+import { languages } from "../../../../api/language";
+import { languageList } from "../../../../../types/header";
 import { NavLink } from "react-router-dom";
 
 export const RightSide = () => {

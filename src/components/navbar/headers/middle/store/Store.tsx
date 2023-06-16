@@ -3,7 +3,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { BsHandbag } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { AuthModel } from "../../../auth/AuthModel";
+import { AuthModel } from "../../../../auth/auth-model/AuthModel";
 import { useAppSelector } from "app/hook";
 
 export const Store = () => {

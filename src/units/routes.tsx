@@ -1,13 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { PublicLayout } from '../components/layout/PublicLayout'
+import { PublicLayout } from '../components/layout/public-layout/PublicLayout'
 import { Error } from '../components/error/Error'
 import { Home } from '../pages/Home'
-import { DeliveryPoints } from '../pages/user-navigation/DeliveryPoints'
-import { Orders } from '../pages/user-orders/Orders'
-import { Questions } from '../pages/user-navigation/Questions'
-import { Cart } from '../pages/user-orders/Cart'
-import { Favourites } from '../pages/user-orders/Favourites'
-import { Profile } from '../pages/user-account/Profile'
+import { DeliveryPoints } from '../pages/navigations/delivery-points/DeliveryPoints'
+import { Orders } from '../pages/user/orders/Orders'
+import { Questions } from '../pages/navigations/questions/Questions'
+import { Cart } from '../pages/user/cart/Cart'
+import { Favourites } from '../pages/user/favourites/Favourites'
+import { Profile } from '../pages/user/profile/Profile'
 
 export const publicRoutes = createBrowserRouter([
     {

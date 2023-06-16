@@ -1,6 +1,6 @@
 import { BottomHeader } from "./headers/bottom/BottomHeader";
-import { MiddleHeader } from "./headers/middle/MiddleHeader";
-import { TopHeader } from "./headers/top/TopHeader";
+import { MiddleHeader } from "./headers/middle/middle-header/MiddleHeader";
+import { TopHeader } from "./headers/top/top-header/TopHeader";
 
 type Props = {};
 

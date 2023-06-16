@@ -1,5 +1,5 @@
-import { LeftSide } from "./LeftSide";
-import { RightSide } from "./RightSide";
+import { LeftSide } from "../left-side/LeftSide";
+import { RightSide } from "../right-side/RightSide";
 
 export const TopHeader = () => {
 

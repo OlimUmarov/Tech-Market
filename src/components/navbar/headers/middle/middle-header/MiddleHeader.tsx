@@ -1,11 +1,10 @@
-import { Catalog } from "./Catalog";
-import { Search } from "./Search";
-import { Store } from "./Store";
-const Logo = require('../../../../assets/images/logo.png')
+import { Catalog } from "../catalog/Catalog";
+import { Search } from "../search/Search";
+import { Store } from "../store/Store";
+const Logo = require("../../../../../assets/images/logo.png")
 
 
 export const MiddleHeader = () => {
-
 
   return (
     <header className="py-5 w-full">

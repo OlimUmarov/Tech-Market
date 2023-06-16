@@ -1,16 +1,17 @@
-import { Submit } from "components/button/Submit";
-import { Schema, authType } from "../../types/Auth";
+import '../auth.css'
+import { Submit } from "components/button/submit/Submit";
+import { Schema, authType } from "../../../types/Auth";
 import { AiOutlinePhone } from "react-icons/ai";
 import { CiLock } from "react-icons/ci";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signIn } from "../../lib/schema";
+import { signIn } from "../../../lib/schema";
 import { SubmitHandler } from "react-hook-form";
 import InputMask from "react-input-mask";
 import authorization from "api/authApi";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { changeAlert, changeLoading,changeToken } from "../../features/contentSlice";
-import { setItem } from "../../lib/itemStorage";
+import { useAppDispatch, useAppSelector } from "../../../app/hook";
+import { changeAlert, changeLoading,changeToken } from "../../../features/contentSlice";
+import { setItem } from "../../../lib/itemStorage";
 import { nprogress } from '@mantine/nprogress';
 import { useNavigate } from "react-router-dom";
 
@@ -62,12 +63,12 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-1 pb-7">
           {/* Phone number */}
-          <section className="flex flex-col gap-1 h-24 mb-1">
+          <section className="auth_section">
             <label htmlFor="phone" className="font-medium">
               Telefon
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="auth_icon">
                 <AiOutlinePhone size={18} color="#A5B4CB" />
               </div>
               <InputMask
@@ -78,7 +79,7 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
                 {...register("phone_number", { required: true })}
                 id="phoneNumber"
                 type="tel"
-                className="block w-full p-4 pl-10 text-sm text-gray-900 placeholder-[#A5B4CB] border border-none rounded-lg bg-slate-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="auth_input"
               />
             </div>
             <p className="text-sm text-red-400">
@@ -87,19 +88,19 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
           </section>
 
           {/*Password */}
-          <section className="flex flex-col gap-1 h-24 mb-1">
+          <section className="auth_section">
             <label htmlFor="password" className="font-medium">
               Parol
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="auth_icon">
                 <CiLock size={18} color="#A5B4CB" />
               </div>
               <input
                 type="password"
                 id="password"
                 {...register("password")}
-                className="block  w-full p-4 pl-10 text-sm text-gray-900 border placeholder-[#A5B4CB] border-none rounded-lg bg-slate-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="auth_input"
                 placeholder="*****"
                 required
               />
@@ -111,7 +112,7 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
       </form>
 
       {/* Already has Accoount */}
-      <div className="font-medium text-md mt-6 w-full flex-center gap-1">
+      <div className="auth_link">
         Akkauntingiz bormi?
         <button disabled={isLoading} className="text-blue-600 cursor-pointer" onClick={onClick}>
           Kirish
