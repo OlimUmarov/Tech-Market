@@ -15,3 +15,11 @@ export const getItem = (key: 'access_token') => {
         console.log(error)
     }
 }
+
+export const deleteItem = (key: 'access_token') => {
+    try {
+       return localStorage.removeItem(key) 
+    } catch (error) {
+        console.log(error)
+    }
+}

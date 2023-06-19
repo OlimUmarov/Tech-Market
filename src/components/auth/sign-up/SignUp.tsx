@@ -28,7 +28,7 @@ export const SignUp: React.FC<authType> = ({ onClick, closeModel }) => {
     resolver: yupResolver(singUp),
   });
 
-  const onSubmit: SubmitHandler<Schema> = async (data) => {
+  const onSubmit: SubmitHandler<object> = async (data) => {
     dispatch(changeLoading(true));
     nprogress.start();
 
@@ -163,7 +163,7 @@ export const SignUp: React.FC<authType> = ({ onClick, closeModel }) => {
             </p>
           </section>
         </div>
-        <Submit title="Ro'yxatdan o'tish" onClick={handleSubmit(onSubmit)} />
+        <Submit title="Ro'yxatdan o'tish" onClick={handleSubmit(onSubmit)} active={true}/>
       </form>
 
       {/* Already has Accoount */}

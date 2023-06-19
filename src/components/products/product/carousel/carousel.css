@@ -1,0 +1,6 @@
+.carousel{
+    overflow-y: scroll;
+}
+.carousel::-webkit-scrollbar{
+    width: 0;
+}

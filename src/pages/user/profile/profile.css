@@ -3,13 +3,13 @@
     @apply block w-full p-3 text-base text-gray-900 border border-gray-300 placeholder-[#A5B4CB] rounded-md bg-white focus:ring-blue-500 focus:border-blue-500
 }
 .profile_group{
-    @apply flex flex-col gap-1 h-24 mb-1 w-full
+    @apply flex flex-col gap-1 w-full
 }
 .profile_link{
     @apply font-medium text-base mt-6 w-full gap-1 flex justify-center items-center
 }
 .profile_section{
-    @apply flex max-md:flex-col max-md:gap-1 w-full gap-4 
+    @apply flex max-md:flex-col max-md:gap-1 w-full gap-4 h-28 
 }
 .profile_gender {
     @apply flex justify-center w-full  items-center border text-base rounded-md p-3

@@ -108,7 +108,7 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
             <p className="text-sm text-red-400">{errors.password?.message}</p>
           </section>
         </div>
-        <Submit title="Kirish" onClick={handleSubmit(onSubmit)} />
+        <Submit title="Kirish" onClick={handleSubmit(onSubmit)} active={true}/>
       </form>
 
       {/* Already has Accoount */}

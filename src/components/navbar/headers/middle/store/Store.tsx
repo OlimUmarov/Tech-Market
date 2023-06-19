@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AuthModel } from "../../../../auth/auth-model/AuthModel";
 import { useAppSelector } from "app/hook";
+import { UserAccount } from "components/button/account/UserAccount";
 
 export const Store = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -13,7 +14,7 @@ export const Store = () => {
 
   useEffect(() => {
     const getToken = localStorage.getItem("access_token");
-    getToken?.length && setToken(getToken)
+    getToken?.length? setToken(getToken) : setToken("")
   }, [isToken]);
 
   function handleAuth(data?: boolean) {
@@ -29,7 +30,7 @@ export const Store = () => {
       <ul className="flex gap-8 font-medium">
         <span className="cursor-pointer">
           {token.length > 10 ? (
-            <Link to="/profile"><BsPerson size={22}/></Link>
+            <UserAccount/>
           ) : (
             <>
             <BsPerson size={22} onClick={() => handleAuth()} />

@@ -8,6 +8,7 @@ import { Questions } from '../pages/navigations/questions/Questions'
 import { Cart } from '../pages/user/cart/Cart'
 import { Favourites } from '../pages/user/favourites/Favourites'
 import { Profile } from '../pages/user/profile/Profile'
+import { Product } from 'pages/products/product/Product'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ export const publicRoutes = createBrowserRouter([
         path: '/profile',
         errorElement: <PublicLayout><Error/></PublicLayout>,
         element: <PublicLayout><Profile/></PublicLayout>,
+    },
+    {
+        path: '/product/:id',
+        errorElement: <PublicLayout><Error/></PublicLayout>,
+        element: <PublicLayout><Product/></PublicLayout>,
     },
 ])
 
