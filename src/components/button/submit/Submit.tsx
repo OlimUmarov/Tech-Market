@@ -15,7 +15,7 @@ export const Submit: React.FC<Button> = ({ title, onClick, active }) => {
       onClick={onClick}
       className={`h-14 bg-blue-500 hover:bg-blue-600 transition-all duration-150 ease-in-out  font-medium rounded-lg pt-1 w-full first-letter  ${
         isLoading && "bg-gray-200 border border-blue-500 cursor-not-allowed" 
-      } ${active? "text-white" : "bg-white border border-blue-600 text-blue-600"}`}
+      } ${active? "text-white" : "bg-white border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white"}`}
     >
       {isLoading ? (
         <Spinner aria-label="Info spinner example" color="info" />

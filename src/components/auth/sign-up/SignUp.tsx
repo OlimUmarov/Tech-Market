@@ -1,6 +1,6 @@
 import '../auth.css'
 import { Submit } from "components/button/submit/Submit";
-import { Schema, authType } from "../../../types/Auth";
+import { authType } from "../../../types/Auth";
 import { AiOutlinePhone } from "react-icons/ai";
 import { CiLock } from "react-icons/ci";
 import { useForm } from "react-hook-form";

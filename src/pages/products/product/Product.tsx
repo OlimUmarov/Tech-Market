@@ -1,4 +1,4 @@
-import { ProductComponent } from "components/products/product/ProductComponent"
+import { ProductComponent } from "components/products/ProductComponent"
 
 
 export const Product = () => {

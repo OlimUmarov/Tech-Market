@@ -1,0 +1,17 @@
+.bg-price{
+    background-color: #FFFF00;
+}
+.bg-big-sales{
+    background-color: #AAFF77;
+}
+.bg-sold-qunatity{
+    background-color: #FFF7C1;
+}
+.productList_title{
+    font-size: 12px;
+    line-height: 12px;
+}
+.productList_img:hover {
+    transform: scale(1.01);
+    transition: all 0.25s ease;
+  }

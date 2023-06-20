@@ -8,7 +8,7 @@ import { Questions } from '../pages/navigations/questions/Questions'
 import { Cart } from '../pages/user/cart/Cart'
 import { Favourites } from '../pages/user/favourites/Favourites'
 import { Profile } from '../pages/user/profile/Profile'
-import { Product } from 'pages/products/product/Product'
+import { ProductComponent } from 'components/products/ProductComponent'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -60,7 +60,7 @@ export const publicRoutes = createBrowserRouter([
     {
         path: '/product/:id',
         errorElement: <PublicLayout><Error/></PublicLayout>,
-        element: <PublicLayout><Product/></PublicLayout>,
+        element: <PublicLayout><ProductComponent/></PublicLayout>,
     },
 ])
 

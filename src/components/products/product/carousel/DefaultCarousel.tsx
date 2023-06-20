@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useEffect, useState } from "react";
 import { carouselImages } from "components/api/images";
 import { BiChevronRight } from "react-icons/bi";
@@ -7,20 +8,17 @@ import "./carousel.css";
 export const DefaultCarousel = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(()=> {
-    console.log(currentImageIndex)
-  },[currentImageIndex])
+  useEffect(() => {
+    console.log(currentImageIndex);
+  }, [currentImageIndex]);
 
   const handleNext = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex + 1) % carouselImages.length
-    );
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
   };
 
   const handlePrev = () => {
     setCurrentImageIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + carouselImages.length) % carouselImages.length
+      (prevIndex) => (prevIndex - 1 + carouselImages.length) % carouselImages.length
     );
   };
 
@@ -28,11 +26,12 @@ export const DefaultCarousel = () => {
     return (
       <div
         className={`w-20 h-24 mb-2 last:mb-0 cursor-pointer border ${
-          index === currentImageIndex? "border-black" : "border-white"}`}
+          index === currentImageIndex ? "border-black" : "border-white"
+        }`}
         onClick={() => setCurrentImageIndex(index)}
         key={index}
       >
-        <img className="w-full h-full object-cover" src={image.link} />
+        <img className="w-full h-full object-cover" src={image.link} alt={`Carousel Image ${index}`} />
       </div>
     );
   });
@@ -43,22 +42,17 @@ export const DefaultCarousel = () => {
 
       <div className="relative">
         <button className="absolute top-1/2 left-2" onClick={handlePrev}>
-          <BiChevronLeft
-            size={25}
-            className="text-white rounded-full bg-black/25"
-          />
+          <BiChevronLeft size={25} className="text-white rounded-full bg-black/25" />
         </button>
         <div className="max-lg:w-[300px] max-lg:h-[400px]">
           <img
             className="w-full h-full object-cover"
             src={carouselImages[currentImageIndex].link}
+            alt={`Carousel Image ${currentImageIndex}`}
           />
         </div>
         <button className="absolute top-1/2 right-2" onClick={handleNext}>
-          <BiChevronRight
-            size={25}
-            className="text-white rounded-full bg-black/25"
-          />
+          <BiChevronRight size={25} className="text-white rounded-full bg-black/25" />
         </button>
       </div>
     </div>

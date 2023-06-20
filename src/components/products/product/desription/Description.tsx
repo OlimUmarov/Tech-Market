@@ -48,9 +48,8 @@ const [favourite,setFavourite] = useState<boolean>(false)
           <p className="w-10">Yetkazib berish:</p>
           <span className="flex-center gap-1"><TiCompass size={20} color="#B8B9BA"/> 1 kun, bepul</span>
         </span>
-
-        <span className="w-full h-px bg-gray-300"></span>
       </section>
+      <span className="w-full h-px bg-gray-200 mt-3"></span>
     </div>
   );
 };
