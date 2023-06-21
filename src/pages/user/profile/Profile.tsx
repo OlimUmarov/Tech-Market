@@ -1,64 +1,78 @@
 import { useEffect, useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch } from "../../../app/hook";
-import { editProfile } from "../../../lib/schema";
 import "./profile.css";
 import InputMask from "react-input-mask";
 import { DatesProvider, DatePickerInput } from "@mantine/dates";
-import { useForm } from "react-hook-form";
 import { Submit } from "components/button/submit/Submit";
 import authorization from "api/authApi";
-import { changeAlert } from "features/contentSlice";
+import { changeAlert, changeLoading } from "features/contentSlice";
 import * as yup from "yup";
+import { profile } from "types/Auth";
+import { nprogress } from "@mantine/nprogress";
 
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState("erkak");
   const [birthday, setBirthday] = useState<Date>(new Date());
   const [gender, setGender] = useState<string>("erkak");
-  const [userId, setUserId] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [middleName, setMiddleName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [phoneError, setPhoneError] = useState<string>("");
   const dispatch = useAppDispatch();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(editProfile),
-    defaultValues: {
-      first_name: "",
-      last_name: "",
-      email: "",
-      middle_name: "",
-    },
-  });
-
   const getUserInfo = async () => {
-    await authorization.getProfile().then((res) => {
-      if (res.status === 200) {
-        console.log(res.data);
-        setUserId(res.data.id);
-        setPhone(res.data.phone_number);
+    await authorization.getProfile().then((response) => {
+      const res = response.data;
+      if (response.status === 200) {
+        console.log(res);
+        setPhone(res.phone_number);
+        setFirstName(res.first_name);
+        setLastName(res.last_name);
+        setEmail(res.email);
+        setGender(res.gender);
+        setBirthday(res.birthday);
       }
     });
   };
 
-  const onSubmit = async (data: object) => {
-    const newSchema = {
-      id: userId,
-      ...data,
+  const onSubmit = async () => {
+    dispatch(changeLoading(true));
+    nprogress.start();
+    const newSchema: profile = {
       gender: gender,
       birthday: birthday,
-      phone_numver: phone,
+      phone_number: phone,
+      first_name: firstName,
+      last_name: lastName,
+      middle_name: middleName,
+      email: email,
     };
-    console.log("data ", data);
     console.log("newSchema ", newSchema);
-    await authorization.editProfile(newSchema).then((res) => {
-      if (res.status === 200) {
-        dispatch(changeAlert({ message: res.statusText, color: "green" }));
-      }
-    });
+    await authorization
+      .editProfile(newSchema)
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch(changeAlert({ message: res.statusText, color: "green" }));
+          dispatch(changeLoading(false));
+          nprogress.complete();
+        }
+      })
+      .catch((err) => {
+        nprogress.complete();
+        dispatch(changeLoading(false));
+        dispatch(
+          changeAlert({
+            message: err.response.data.non_field_errors,
+            color: "red",
+          })
+        );
+      })
+      .finally(() => {
+        dispatch(changeLoading(false));
+        nprogress.complete();
+      });
   };
 
   function handleClick(data: string) {
@@ -91,7 +105,7 @@ export const Profile = () => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="content pt-10">
+    <form onSubmit={onSubmit} className="content pt-10">
       <h1 className="text-2xl font-medium mb-4">Ma'lumotlarim</h1>
 
       {/* First & Last Names */}
@@ -104,7 +118,8 @@ export const Profile = () => {
             type="text"
             placeholder="Familiyangizni kiriting"
             className="profile_input"
-            {...register("last_name")}
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
           />
         </div>
 
@@ -116,7 +131,8 @@ export const Profile = () => {
             type="text"
             placeholder="Ismingizni kiriting"
             className="profile_input"
-            {...register("first_name")}
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
           />
         </div>
       </section>
@@ -124,14 +140,15 @@ export const Profile = () => {
       {/* Middle name */}
       <section className="profile_section">
         <div className="profile_group">
-          <label htmlFor="last_name" className="font-medium text-lg">
+          <label htmlFor="middle_name" className="font-medium text-lg">
             Otasining ismi <span className="text-blue-600">*</span>
           </label>
           <input
             type="text"
-            placeholder="Otasining ismi"
+            placeholder="Otasini ismi"
             className="profile_input"
-            {...register("middle_name")}
+            value={middleName}
+            onChange={(event) => setMiddleName(event.target.value)}
           />
         </div>
 
@@ -149,9 +166,9 @@ export const Profile = () => {
             type="email"
             placeholder="example@gamil.com"
             className="profile_input"
-            {...register("email")}
+            value={email}
+            onChange={(event)=> setEmail(event.target.value)}
           />
-          <p className="text-sm text-red-400">{errors.email?.message}</p>
         </div>
       </section>
 
@@ -230,7 +247,7 @@ export const Profile = () => {
       <section className=" pt-10">
         <Submit
           title="Ma'lumotlarni yangilash"
-          onClick={handleSubmit(onSubmit)}
+          onClick={onSubmit}
           active={true}
         />
       </section>

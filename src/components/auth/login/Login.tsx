@@ -41,7 +41,6 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
           closeModel(true)
           nprogress.complete()
           navigate("/")
-          dispatch(changeToken(true))
         }
       })
       .catch((err) => {

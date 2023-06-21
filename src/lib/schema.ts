@@ -22,12 +22,4 @@ export const signIn = yup.object().shape({
     .required("Iltimos, parol ni kiriting!"),
 });
 
-export const editProfile = yup.object().shape({
-  first_name: yup.string(),
-  last_name: yup.string(),
-  middle_name: yup.string(),
-  email: yup
-    .string()
-    .email("Invalid email address"),
-    phone_number: yup.string().matches(/^\+998\(\d{2}\) \d{3}-\d{2}-\d{2}$/, 'Telefon raqamni kiriting!'),
-});
+
