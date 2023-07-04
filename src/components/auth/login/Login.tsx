@@ -10,7 +10,7 @@ import { SubmitHandler } from "react-hook-form";
 import InputMask from "react-input-mask";
 import authorization from "api/authApi";
 import { useAppDispatch, useAppSelector } from "../../../app/hook";
-import { changeAlert, changeLoading,changeToken } from "../../../features/contentSlice";
+import { changeAlert, changeLoading } from "../../../features/contentSlice";
 import { setItem } from "../../../lib/itemStorage";
 import { nprogress } from '@mantine/nprogress';
 import { useNavigate } from "react-router-dom";
@@ -61,6 +61,7 @@ export const Login: React.FC<authType> = ({ onClick, closeModel }) => {
     <div className="h-86 w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-1 pb-7">
+        <h1 className='font-medium text-2xl text-center mb-4'>Kirish</h1>
           {/* Phone number */}
           <section className="auth_section">
             <label htmlFor="phone" className="font-medium">

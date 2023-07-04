@@ -1,6 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import { products } from "../../api/products";
-import { Carousel } from "@mantine/carousel";
+import { Carousel } from '@mantine/carousel';
 
 type Props = {
   title: string;

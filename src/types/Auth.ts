@@ -13,10 +13,11 @@ export type profile = {
   first_name: string;
   last_name: string;
   middle_name: string;
-  birthday: Date;
+  birthday: string | Date 
   gender: string;
   email: string;
   phone_number: string;
+  user_role?: "C"
 }
 
 export type userProfile = {

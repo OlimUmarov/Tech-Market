@@ -1,0 +1,12 @@
+.textStyle{
+    @apply cursor-pointer hover:text-blue-500 whitespace-nowrap
+}
+
+::-webkit-scrollbar {
+    height: 0px;
+    background-color: transparent; /* Hide the scrollbar track */
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Hide the scrollbar thumb */
+  }

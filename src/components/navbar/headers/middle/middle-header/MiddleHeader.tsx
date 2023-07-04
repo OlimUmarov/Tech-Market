@@ -18,7 +18,7 @@ export const MiddleHeader = () => {
                 alt="logo"
                 className="w-10 h-10 rounded-full"
               />
-              <span className="self-center text-2xl font-semibold pl-2 whitespace-nowrap dark:text-white">
+              <span className="self-center text-3xl font-semibold pl-2 whitespace-nowrap  text-blue-500">
                 tech market
               </span>
             </a>

@@ -1,0 +1,12 @@
+function check(array,array2){
+
+}
+
+function chackArray(array){
+    for(let i = 0; i < array.length - 1; i++){
+        if(array[i].isArray){
+            
+            chackArray(array[i])
+        }
+    }
+}

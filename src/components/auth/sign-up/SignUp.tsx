@@ -93,7 +93,7 @@ export const SignUp: React.FC<authType> = ({ onClick, closeModel }) => {
     <div className="h-86 w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-1 pb-7">
-          
+          <h1 className='font-medium text-2xl text-center mb-4'>Ro'yxatdan o'tish</h1>
           {/* Phone number */}
           <section className="auth_section">
             <label htmlFor="phone" className="font-medium">

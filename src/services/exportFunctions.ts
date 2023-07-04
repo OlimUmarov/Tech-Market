@@ -8,3 +8,12 @@ export function formatPrice(price: number) {
     }
       return groups.join(" ");
   }
+
+export function getCategoryIDFromPath(path: string) {
+  const parts = path.split('=');
+  if (parts.length === 2) {
+    const id = parts[1];
+    return id;
+  }
+  return null;
+}

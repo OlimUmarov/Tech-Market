@@ -9,6 +9,7 @@ import { Cart } from '../pages/user/cart/Cart'
 import { Favourites } from '../pages/user/favourites/Favourites'
 import { Profile } from '../pages/user/profile/Profile'
 import { ProductComponent } from 'components/products/ProductComponent'
+import { Category } from 'pages/category/Category'
 
 export const publicRoutes = createBrowserRouter([
     {
@@ -23,10 +24,10 @@ export const publicRoutes = createBrowserRouter([
         element: <PublicLayout><Home/></PublicLayout>,
     },
     {
-        path: '/category',
+        path: '/category/:nameid',
         errorElement: <PublicLayout><Error/></PublicLayout>,
-        element: <PublicLayout><Home/></PublicLayout>,
-    },
+        element: <PublicLayout><Category/></PublicLayout>,
+      },
     {
         path: '/questions',
         errorElement: <PublicLayout><Error/></PublicLayout>,

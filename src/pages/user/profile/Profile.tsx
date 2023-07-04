@@ -12,7 +12,7 @@ import { nprogress } from "@mantine/nprogress";
 
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState("erkak");
-  const [birthday, setBirthday] = useState<Date>(new Date());
+  const [birthday, setBirthday] = useState<Date>();
   const [gender, setGender] = useState<string>("erkak");
   const [phone, setPhone] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
@@ -26,7 +26,6 @@ export const Profile = () => {
     await authorization.getProfile().then((response) => {
       const res = response.data;
       if (response.status === 200) {
-        console.log(res);
         setPhone(res.phone_number);
         setFirstName(res.first_name);
         setLastName(res.last_name);
@@ -42,14 +41,14 @@ export const Profile = () => {
     nprogress.start();
     const newSchema: profile = {
       gender: gender,
-      birthday: birthday,
+      birthday: "",
       phone_number: phone,
       first_name: firstName,
       last_name: lastName,
       middle_name: middleName,
       email: email,
+      user_role: "C"
     };
-    console.log("newSchema ", newSchema);
     await authorization
       .editProfile(newSchema)
       .then((res) => {

@@ -3,6 +3,7 @@ import { useState,useRef,useEffect } from "react";
 import {  useAppDispatch } from "../../../app/hook";
 import {  NavLink, useNavigate } from "react-router-dom";
 import { BiExit } from "react-icons/bi";
+import "./animation.css"
 import { changeToken } from "../../../features/contentSlice";
 import { deleteItem } from "lib/itemStorage";
 
@@ -21,6 +22,7 @@ export const UserAccount = () => {
     deleteItem("access_token")
     dispatch(changeToken(false))
     navigate("/")
+    window.location.reload()
     };
 
 
@@ -37,12 +39,11 @@ export const UserAccount = () => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <div className="w-full lg:max-w-sm" ref={elementRef}>
       <BsPerson size={22}
       onClick={handleMenu}/>
-        {isMenuClicked && (
-          <div className="absolute left-0 max-lg:w-28  z-10 mt-1 w-28 p-2 border bg-white border-slate-100 flex flex-col items-start">
+          <div className={`absolute  ${isMenuClicked ? "visible shadow-drop-2-top" : "shadow-drop-2-bottom invisible"} left-0 max-lg:w-28  z-10 mt-1 w-28 p-2 border bg-white border-slate-100 flex flex-col items-start`}>
             <NavLink
               to="/profile"
               onClick={handleMenu}
@@ -63,7 +64,7 @@ export const UserAccount = () => {
               Chiqish
             </span>
           </div>
-        )}
+
       </div>
     </div>
   );

@@ -11,3 +11,7 @@
 .auth_link{
     @apply font-medium text-base mt-6 w-full gap-1 flex justify-center items-center
 }
+
+.bg-auth{
+    background: url("../../assets/images/auth_image.svg") no-repeat center;
+}

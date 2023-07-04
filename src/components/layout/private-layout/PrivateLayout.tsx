@@ -1,4 +1,5 @@
 import { Navbar } from "../../navbar/Navbar"
+import 'animate.css';
 type Props = {children: React.ReactNode}
 
 export const PrivateLayout = ({children}:Props) => {
